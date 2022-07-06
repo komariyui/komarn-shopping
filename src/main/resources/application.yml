@@ -1,0 +1,26 @@
+spring:
+  jackson:
+    time-zone: Asia/Shanghai
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/komariyui_sql
+    username: root
+    password:
+#    url: jdbc:mysql://www.wuhupoo.cn/javauphw
+#    username: javaUpHW
+#    password: izeFbZPNiNs42Et6
+mybatis-plus:
+  mapper-locations:classpath: /mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #驼峰写法配置关闭 否则将要有list_xxx写成listXxx
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-datate-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 2348
+  tomcat:
+    #无限制post规则传输数据量
+    max-http-post-size: -1
