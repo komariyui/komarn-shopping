@@ -3,6 +3,7 @@ package com.eShop.shiratama.controller.users;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.entity.returnJson.template;
 import com.eShop.shiratama.service.users.UsersService;
+import com.eShop.shiratama.service.users.testService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,13 @@ public class UsersController {
 
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private testService ts;
 
     @PostMapping
     public HashMap register (@RequestBody UsersBean usersEntity){
         return usersService.insertUser(usersEntity);
     }
-
+    @GetMapping
+    public String getVerification(@RequestParam  String username){return  ts.createCode(username);}
 }
