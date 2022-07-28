@@ -1,6 +1,7 @@
-package com.eShop.shiratama.Service;
+package com.eShop.shiratama.service.users;
 
-import com.eShop.shiratama.Dao.UsersDao;
+import com.eShop.shiratama.Dao.users.UsersDao;
+import com.eShop.shiratama.entity.returnJson.template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,10 @@ public class UsersService {
         }
 
         return HashMap;
+    }
+    // verification code
+    public template verificationCode(String verificationCode){
+        template returnValue = new template();
+        return returnValue;
     }
 }

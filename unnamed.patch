@@ -1,0 +1,71 @@
+Index: src/main/java/com/eShop/shiratama/controller/test.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/eShop/shiratama/controller/test.java b/src/main/java/com/eShop/shiratama/controller/test.java
+--- a/src/main/java/com/eShop/shiratama/controller/test.java	(revision 6da85093d5e5ae8d98ca10d6584767891075a9ea)
++++ b/src/main/java/com/eShop/shiratama/controller/test.java	(revision 872e46b35b0b69ae3c159981e9b733a998168f63)
+@@ -4,7 +4,7 @@
+ import org.springframework.web.bind.annotation.RestController;
+ 
+ import java.util.HashMap;
+-//
++////
+ @RestController
+ public class test {
+     @GetMapping("/test")
+Index: src/main/java/com/eShop/shiratama/Dao/UsersDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/eShop/shiratama/Dao/UsersDao.java b/src/main/java/com/eShop/shiratama/Dao/users/UsersDao.java
+rename from src/main/java/com/eShop/shiratama/Dao/UsersDao.java
+rename to src/main/java/com/eShop/shiratama/Dao/users/UsersDao.java
+--- a/src/main/java/com/eShop/shiratama/Dao/UsersDao.java	(revision 872e46b35b0b69ae3c159981e9b733a998168f63)
++++ b/src/main/java/com/eShop/shiratama/Dao/users/UsersDao.java	(revision 437009eba1992c0ac6cc3d555e0ea32f16b2f626)
+@@ -1,6 +1,6 @@
+-package com.eShop.shiratama.Dao;
++package com.eShop.shiratama.Dao.users;
+ 
+-import com.eShop.shiratama.Bean.UsersBean;
++import com.eShop.shiratama.entity.UsersBean;
+ import org.apache.ibatis.annotations.Mapper;
+ import org.apache.ibatis.annotations.Param;
+ 
+Index: src/main/java/com/eShop/shiratama/controller/UsersController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/eShop/shiratama/controller/UsersController.java b/src/main/java/com/eShop/shiratama/controller/users/UsersController.java
+rename from src/main/java/com/eShop/shiratama/controller/UsersController.java
+rename to src/main/java/com/eShop/shiratama/controller/users/UsersController.java
+--- a/src/main/java/com/eShop/shiratama/controller/UsersController.java	(revision 872e46b35b0b69ae3c159981e9b733a998168f63)
++++ b/src/main/java/com/eShop/shiratama/controller/users/UsersController.java	(revision 437009eba1992c0ac6cc3d555e0ea32f16b2f626)
+@@ -1,6 +1,6 @@
+-package com.eShop.shiratama.controller;
++package com.eShop.shiratama.controller.users;
+ 
+-import com.eShop.shiratama.Service.UsersService;
++import com.eShop.shiratama.service.users.UsersService;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RequestParam;
+Index: src/main/java/com/eShop/shiratama/Bean/UsersBean.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/eShop/shiratama/Bean/UsersBean.java b/src/main/java/com/eShop/shiratama/entity/UsersBean.java
+rename from src/main/java/com/eShop/shiratama/Bean/UsersBean.java
+rename to src/main/java/com/eShop/shiratama/entity/UsersBean.java
+--- a/src/main/java/com/eShop/shiratama/Bean/UsersBean.java	(revision 872e46b35b0b69ae3c159981e9b733a998168f63)
++++ b/src/main/java/com/eShop/shiratama/entity/UsersBean.java	(revision 437009eba1992c0ac6cc3d555e0ea32f16b2f626)
+@@ -1,4 +1,4 @@
+-package com.eShop.shiratama.Bean;
++package com.eShop.shiratama.entity;
+ 
+ import com.baomidou.mybatisplus.annotation.TableName;
+ 
