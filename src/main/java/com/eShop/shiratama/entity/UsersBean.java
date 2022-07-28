@@ -1,6 +1,7 @@
 package com.eShop.shiratama.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 public class UsersBean {
     private int id;
@@ -10,11 +11,13 @@ public class UsersBean {
     private String fromClass;
     private String studentName;
     private int status;
+    private String verificationCode;
+    private String phoneCode;
 
     public UsersBean() {
     }
 
-    public UsersBean(int id, String username, String password, String fromTeacher, String fromClass, String studentName, int status) {
+    public UsersBean(int id, String username, String password, String fromTeacher, String fromClass, String studentName, int status, String verificationCode, String phoneCode) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -22,6 +25,16 @@ public class UsersBean {
         this.fromClass = fromClass;
         this.studentName = studentName;
         this.status = status;
+        this.verificationCode = verificationCode;
+        this.phoneCode = phoneCode;
+    }
+
+    public String getPhoneCode() {
+        return phoneCode;
+    }
+
+    public void setPhoneCode(String phoneCode) {
+        this.phoneCode = phoneCode;
     }
 
     public int getId() {
@@ -80,16 +93,11 @@ public class UsersBean {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "UsersBean{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", fromTeacher='" + fromTeacher + '\'' +
-                ", fromClass='" + fromClass + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", status=" + status +
-                '}';
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }
