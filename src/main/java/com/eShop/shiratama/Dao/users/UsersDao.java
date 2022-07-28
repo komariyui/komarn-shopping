@@ -1,6 +1,6 @@
-package com.eShop.shiratama.Dao;
+package com.eShop.shiratama.Dao.users;
 
-import com.eShop.shiratama.Bean.UsersBean;
+import com.eShop.shiratama.entity.UsersBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

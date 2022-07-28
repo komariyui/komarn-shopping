@@ -1,4 +1,4 @@
-package com.eShop.shiratama.Bean;
+package com.eShop.shiratama.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 

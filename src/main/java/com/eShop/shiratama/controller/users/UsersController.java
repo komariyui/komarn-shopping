@@ -1,6 +1,6 @@
-package com.eShop.shiratama.controller;
+package com.eShop.shiratama.controller.users;
 
-import com.eShop.shiratama.Service.UsersService;
+import com.eShop.shiratama.service.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
