@@ -2,6 +2,7 @@ package com.eShop.shiratama.controller.users;
 
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.entity.returnJson.template;
+import com.eShop.shiratama.error.templateReturn;
 import com.eShop.shiratama.service.users.UsersService;
 import com.eShop.shiratama.service.users.testService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,8 @@ public class UsersController {
         return usersService.insertUser(usersEntity);
     }
     @GetMapping
-    public String getVerification(@RequestParam  String username){return  ts.createCode(username);}
+    public templateReturn getVerification(@RequestParam  String username) throws Exception{
+        
+        return  templateReturn.success(ts.createCode(username),0,"成功获取验证码");
+    }
 }
