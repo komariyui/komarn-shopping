@@ -1,4 +1,4 @@
-package com.eShop.shiratama.service.users;
+package com.eShop.shiratama.Service.users;
 
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
