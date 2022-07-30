@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/users")//////////////
+@RequestMapping("/users")////////////////
 public class UsersController {
 
     @Autowired
@@ -29,4 +29,6 @@ public class UsersController {
         if(usersService.checkUsername(username)) throw new paramException("用户名已被占用");
         return  templateReturn.success(ts.createCode(username),0,"成功获取验证码");
     }
+//    @GetMapping
+//    public templateReturn get
 }

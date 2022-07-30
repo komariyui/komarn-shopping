@@ -35,10 +35,6 @@ public class UsersService {
         if(testServices.getCode(usersEntity.getUsername()).equals(usersEntity.getVerificationCode())){
             System.out.println("success");
         }else{
-            int i = 10;
-            String str = Integer.toString(i);
-            Double du[] = {1.1,1.2} ;
-            HashMap <String,Object> Hash = new HashMap();
             HashMap.put("data","验证码错误");
             HashMap.put("status","400");
             System.out.println("error");
