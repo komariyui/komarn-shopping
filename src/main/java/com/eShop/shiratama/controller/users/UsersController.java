@@ -6,13 +6,14 @@ import com.eShop.shiratama.Service.users.testService;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.error.exceptionClass.paramException;
 import com.eShop.shiratama.error.templateReturn;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/users")////////////////
+@RequestMapping("/users")
 public class UsersController {
 
     @Autowired
@@ -29,6 +30,8 @@ public class UsersController {
         if(usersService.checkUsername(username)) throw new paramException("用户名已被占用");
         return  templateReturn.success(ts.createCode(username),0,"成功获取验证码");
     }
-//    @GetMapping
-//    public templateReturn get
+    @GetMapping("/{username}{password}")
+    public HashMap login (@PathVariable("username") String username,@PathVariable("password") String password){
+        return usersService.login(username,password);
+    }
 }

@@ -40,8 +40,6 @@ public class UsersService {
             System.out.println("error");
             return HashMap;
         }
-
-
         if (usersDao.selectUser(usersEntity.getUsername()) == null){
             int data = usersDao.insertUser(usersEntity.getUsername(),usersEntity.getPassword());
             if (data != 1){
@@ -55,8 +53,23 @@ public class UsersService {
             HashMap.put("data","用户名已存在");
             HashMap.put("status","400");
         }
-
         return HashMap;
     }
 
+//    用户登录
+    public HashMap login(String username,String password){
+        HashMap<String,Object> HashMap = new HashMap<>();
+        if(!testServices.getCode(username).equals(testServices.createCode(username))){
+            System.out.println("success");
+        }else{
+            HashMap.put("data","验证码错误");
+            HashMap.put("status","400");
+            System.out.println("error");
+            return HashMap;
+        }
+        UsersBean user = usersDao.login(username,password);
+        HashMap.put("data",user);
+        HashMap.put("status","200");
+        return HashMap;
+    }
 }
