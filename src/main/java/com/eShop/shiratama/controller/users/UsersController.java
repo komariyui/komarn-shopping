@@ -1,7 +1,7 @@
 package com.eShop.shiratama.controller.users;
 
 
-import com.eShop.shiratama.service.users.UsersService;
+import com.eShop.shiratama.Service.users.UsersService;
 import com.eShop.shiratama.Service.users.testService;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.error.exceptionClass.paramException;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/users")//////
+@RequestMapping("/users")////////
 public class UsersController {
 
     @Autowired
