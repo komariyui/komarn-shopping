@@ -10,6 +10,4 @@ public interface UsersDao {
     public int insertUser(@Param("username") String username,@Param("password") String password);
 //    查询一个用户
     public UsersBean selectUser(@Param("username") String username);
-//    用户登录
-    public UsersBean login(@Param("username") String username,@Param("password") String password);
 }

@@ -61,20 +61,5 @@ public class UsersService {
         return HashMap;
     }
 
-//    用户登录
-    public HashMap login(String username,String password){
-        HashMap<String,Object> HashMap = new HashMap<>();
-        if(!testServices.getCode(username).equals(testServices.createCode(username))){
-            System.out.println("success");
-        }else{
-            HashMap.put("data","验证码错误");
-            HashMap.put("status","400");
-            System.out.println("error");
-            return HashMap;
-        }
-        UsersBean user = usersDao.login(username,password);
-        HashMap.put("data",user);
-        HashMap.put("status","200");
-        return HashMap;
-    }
+
 }
