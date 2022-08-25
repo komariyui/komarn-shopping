@@ -5,6 +5,7 @@ import com.eShop.shiratama.components.PasswordEncryption;
 import com.eShop.shiratama.components.TokenIssue;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.error.exceptionClass.paramException;
+import com.eShop.shiratama.error.templateReturn;
 import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -65,16 +66,21 @@ public class UsersService {
     }
 
     //login user
-    public HashMap loginUser(String username,String password,Boolean remember){
+    public templateReturn loginUser(String username, String password, Boolean remember){
         HashMap<String,Object> loginUserMap = new HashMap<>();
 
         UsersBean userInformation = usersDao.selectUser(username);
+        if(userInformation == null) return templateReturn.error(401,"未查询到此用户");
         // hash compare
         Boolean passwordIsRightOrNot = passwordEncryption.matches(password,userInformation.getPassword());
-        if(passwordIsRightOrNot) // issue token
-            tokenIssue.TokenIssues(username,remember);
+        if(passwordIsRightOrNot){ // issue token
+            loginUserMap.put("token",tokenIssue.TokenIssues(username,remember));
+            loginUserMap.put("username",username);
+            return templateReturn.success(loginUserMap,0,"成功");
+        }else {
+            return templateReturn.error(401,"用户名或密码错误");
+        }
 
-        return loginUserMap;
     }
 
 }

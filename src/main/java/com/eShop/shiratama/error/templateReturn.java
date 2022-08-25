@@ -22,10 +22,16 @@ public class templateReturn {
         this.errno = errno;
         this.errmsg = errmsg;
     }
+    public templateReturn(int errno,String errmsg){
+        this.errno = errno;
+        this.errmsg = errmsg;
+    }
     //2.maybe return string
     public static templateReturn success(String data,int errno,String errmsg){
         return new templateReturn(data,errno,errmsg);
     }
+
+    public static templateReturn error(int errno,String errmsg){ return new templateReturn(errno,errmsg);}
     public templateReturn(String data,int errno,String errmsg) {
         this.data = data;
         this.errno = errno;

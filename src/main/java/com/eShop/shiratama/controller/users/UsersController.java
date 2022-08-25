@@ -37,8 +37,7 @@ public class UsersController {
             @PathVariable String password,
             @PathVariable Boolean remember
     ){
-        usersService.loginUser(username,password,remember);
-        return templateReturn.success("miao",0,"成功");
+        return usersService.loginUser(username,password,remember);
     }
 
 

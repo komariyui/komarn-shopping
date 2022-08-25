@@ -20,11 +20,11 @@ public class TokenIssue {
 
 
 
-    public void TokenIssues(String username, Boolean remember){
+    public String TokenIssues(String username, Boolean remember){
         this.username = username;
         this.remember = remember;
 
-        issueToken();
+        return issueToken();
     }
 
     private Boolean invalidAll(String username){
