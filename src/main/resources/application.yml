@@ -3,9 +3,9 @@ spring:
     time-zone: Asia/Shanghai
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://106.55.226.175:3306/komarnShopping
-    username: komarnShopping
-    password: AYtasee8dNm6NTyi
+    url: jdbc:mysql://localhost:3306/komarnshopping
+    username: root
+    password:
 mybatis-plus:
   mapper-locations:classpath: /mapper/**/*.xml
   configuration:

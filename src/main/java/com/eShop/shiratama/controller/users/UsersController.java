@@ -30,8 +30,15 @@ public class UsersController {
         if(usersService.checkUsername(username)) throw new paramException("用户名已被占用");
         return  templateReturn.success(ts.createCode(username),0,"成功获取验证码");
     }
-    @GetMapping("/{username}{password}")
-    public HashMap login (@PathVariable("username") String username,@PathVariable("password") String password){
-        return usersService.login(username,password);
+
+    @GetMapping("/username/password/remember")
+    public templateReturn login(
+            @PathVariable String username,
+            @PathVariable String password,
+            @PathVariable Boolean remember
+    ){
+        return templateReturn.success("miao",0,"成功");
     }
+
+
 }

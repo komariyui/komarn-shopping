@@ -1,6 +1,7 @@
 package com.eShop.shiratama.Service.users;
 
 import com.eShop.shiratama.Dao.users.UsersDao;
+import com.eShop.shiratama.components.PasswordEncryption;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.error.exceptionClass.paramException;
 import org.apache.tomcat.util.bcel.Const;
@@ -16,6 +17,9 @@ public class UsersService {
 
     @Autowired
     private UsersDao usersDao;
+
+    @Autowired
+    private PasswordEncryption passwordEncryption;
 
     @Autowired
     private testService testServices;
@@ -41,7 +45,8 @@ public class UsersService {
             return HashMap;
         }
         if (usersDao.selectUser(usersEntity.getUsername()) == null){
-            int data = usersDao.insertUser(usersEntity.getUsername(),usersEntity.getPassword());
+            String password =  passwordEncryption.encode(usersEntity.getPassword());
+            int data = usersDao.insertUser(usersEntity.getUsername(),password);
             if (data != 1){
                 HashMap.put("data","注册失败");
                 HashMap.put("status","400");
