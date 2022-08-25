@@ -31,12 +31,13 @@ public class UsersController {
         return  templateReturn.success(ts.createCode(username),0,"成功获取验证码");
     }
 
-    @GetMapping("/username/password/remember")
+    @GetMapping("/{username}/{password}/{remember}")
     public templateReturn login(
             @PathVariable String username,
             @PathVariable String password,
             @PathVariable Boolean remember
     ){
+        usersService.loginUser(username,password,remember);
         return templateReturn.success("miao",0,"成功");
     }
 

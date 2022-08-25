@@ -2,6 +2,7 @@ package com.eShop.shiratama.Service.users;
 
 import com.eShop.shiratama.Dao.users.UsersDao;
 import com.eShop.shiratama.components.PasswordEncryption;
+import com.eShop.shiratama.components.TokenIssue;
 import com.eShop.shiratama.entity.UsersBean;
 import com.eShop.shiratama.error.exceptionClass.paramException;
 import org.apache.tomcat.util.bcel.Const;
@@ -23,6 +24,8 @@ public class UsersService {
 
     @Autowired
     private testService testServices;
+    @Autowired
+    private TokenIssue tokenIssue;
 
     //check username
     public Boolean checkUsername(String username) throws paramException {
@@ -62,13 +65,14 @@ public class UsersService {
     }
 
     //login user
-    public HashMap loginUser(String username,String password,String remember){
+    public HashMap loginUser(String username,String password,Boolean remember){
         HashMap<String,Object> loginUserMap = new HashMap<>();
 
         UsersBean userInformation = usersDao.selectUser(username);
         // hash compare
         Boolean passwordIsRightOrNot = passwordEncryption.matches(password,userInformation.getPassword());
         if(passwordIsRightOrNot) // issue token
+            tokenIssue.TokenIssues(username,remember);
 
         return loginUserMap;
     }
