@@ -12,6 +12,7 @@ public interface TokenIssueDao {
             @Param("token_code") String token_code,
             @Param("login_time") Date login_time,
             @Param("validity_period") Date validity_period,
-            @Param("is_long_token") Boolean is_long_token
+            @Param("is_long_token") Boolean is_long_token,
+            @Param("status") Boolean status
             );
 }

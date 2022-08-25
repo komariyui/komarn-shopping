@@ -9,17 +9,19 @@ public class tokens {
     private Date login_time;
     private Date validity_period;
     private Date is_long_token;
+    private Boolean status;
 
     public tokens() {
     }
 
-    public tokens(Integer id, String username, String token_code, Date login_time, Date validity_period, Date is_long_token) {
+    public tokens(Integer id, String username, String token_code, Date login_time, Date validity_period, Date is_long_token, Boolean status) {
         this.id = id;
         this.username = username;
         this.token_code = token_code;
         this.login_time = login_time;
         this.validity_period = validity_period;
         this.is_long_token = is_long_token;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -68,5 +70,13 @@ public class tokens {
 
     public void setIs_long_token(Date is_long_token) {
         this.is_long_token = is_long_token;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
