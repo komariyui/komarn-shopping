@@ -61,5 +61,16 @@ public class UsersService {
         return HashMap;
     }
 
+    //login user
+    public HashMap loginUser(String username,String password,String remember){
+        HashMap<String,Object> loginUserMap = new HashMap<>();
+
+        UsersBean userInformation = usersDao.selectUser(username);
+        // hash compare
+        Boolean passwordIsRightOrNot = passwordEncryption.matches(password,userInformation.getPassword());
+        if(passwordIsRightOrNot) // issue token
+
+        return loginUserMap;
+    }
 
 }
