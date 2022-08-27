@@ -30,4 +30,24 @@ public class ClassifyService {
 
         return templateReturn.success(returnMap,200,null);
     }
+
+    //get classify for level two
+    public templateReturn getClassifyServiceForTwo(String towCode){
+        HashMap<Integer,Object> needReturnMap = new HashMap<>();
+
+        List<ClassifyBean> returnLevelTwoList = classifyDao.getClassifyLevelTwoGroup(towCode);
+              int index = 0;
+        for(var item : returnLevelTwoList){
+            HashMap<String,Object> forMap = new HashMap<>();
+            forMap.put("name",item.getLevel_two_name());
+            forMap.put("code",item.getLevel_two_code());
+            forMap.put("image","/shopResources/classify/"+item.getLevel_two_image());
+            forMap.put("information",item.getLevel_two_information());
+            forMap.put("group",item.getLevel_two_group());
+            forMap.put("group_information",item.getLevel_two_group_information());
+            needReturnMap.put(index++,forMap);
+        }
+
+        return templateReturn.success(needReturnMap, 200, null);
+    }
 }

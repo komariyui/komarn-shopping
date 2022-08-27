@@ -4,4 +4,7 @@
     <select id="getClassifyLevelOneGroup" resultType="com.eShop.shiratama.entity.ClassifyBean">
         select distinct level_one_name,level_one_code from classify
     </select>
+    <select id="getClassifyLevelTwoGroup" resultType="com.eShop.shiratama.entity.ClassifyBean">
+        select level_two_name,level_two_code,level_two_image,level_two_information,level_two_group,level_two_group_information from classify where level_one_code=#{twoCode}
+    </select>
 </mapper>

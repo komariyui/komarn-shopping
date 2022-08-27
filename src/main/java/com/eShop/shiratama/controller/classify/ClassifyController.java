@@ -3,10 +3,7 @@ package com.eShop.shiratama.controller.classify;
 import com.eShop.shiratama.Service.classify.ClassifyService;
 import com.eShop.shiratama.error.templateReturn;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/classify")
@@ -19,8 +16,8 @@ public class ClassifyController {
     public templateReturn getClassify(){
         return classifyService.getClassifyService();
     }
-//    @GetMapping("/{twoCode}")
-//    public templateReturn getClassifyLevelTwo(){
-//
-//    }
+    @GetMapping("/{twoCode}")
+    public templateReturn getClassifyLevelTwo(@PathVariable("twoCode") String twoCode){
+        return classifyService.getClassifyServiceForTwo(twoCode);
+    }
 }
