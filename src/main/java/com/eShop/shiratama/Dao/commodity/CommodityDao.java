@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface CommodityDao {
-    public Integer getCommodityAllNumberOfPages();
+    public int getCommodityAllNumberOfPages();
 
     public List<CommodityBean> getCommodityInformation(@Param("start") Integer start, @Param("end") Integer end);
 }

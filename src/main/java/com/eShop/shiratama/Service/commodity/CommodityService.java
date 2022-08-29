@@ -6,6 +6,7 @@ import com.eShop.shiratama.error.templateReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -15,12 +16,35 @@ public class CommodityService {
     private CommodityDao commodityDao;
 
     public templateReturn getAllCommodityListService(String page){
+        HashMap<String,Object> objectData = new HashMap<>();
 
-        int totalNumberOfPages = commodityDao.getCommodityAllNumberOfPages()/10;
-        int pointer = Integer.parseInt(page)*10-10;
-        List<CommodityBean> commodityData =  commodityDao.getCommodityInformation(pointer,pointer+10);
+        Integer totalNumberOfPages = getNumberOfPages(commodityDao.getCommodityAllNumberOfPages());
+        Integer[] pointer = getPointer(page);
 
-        return templateReturn.success(commodityData,200,null);
+        List<CommodityBean> commodityData =  commodityDao.getCommodityInformation(pointer[0],pointer[1]);
+        objectData.put("data",commodityData);
+        objectData.put("nowPage",page);
+        objectData.put("totalPage",totalNumberOfPages);
+
+        return templateReturn.success(objectData,200,null);
+    }
+
+//    public templateReturn getAllCommodityListForClassifyService(String classifyCode,String page){
+//
+//    }
+
+    private Integer[] getPointer(String nowPage){
+        Integer[] parseInt = new Integer[2];
+
+        Integer nowPageInt=  Integer.parseInt(nowPage);
+        parseInt[0] = nowPageInt*10-10;   //start
+        parseInt[1] = nowPageInt+10;    //end
+
+        return parseInt;
+    }
+
+    private Integer getNumberOfPages(Integer total){
+        return total % 10 == 0 ? total/10:total/10+1;
     }
 
 }

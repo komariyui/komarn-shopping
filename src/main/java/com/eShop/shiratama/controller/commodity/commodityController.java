@@ -21,4 +21,10 @@ public class commodityController {
     public templateReturn getAllCommodity(@PathVariable("page") String page){
         return commodityService.getAllCommodityListService(page);
     }
+
+//    //get commodity for classify(have paging)
+//    @GetMapping("/{classifyCode}/{page}")
+//    public templateReturn getAllCommodityForClassify(@PathVariable("classifyCode") String classifyCode,@PathVariable("page") String page){
+//        return commodityService.getAllCommodityListForClassifyService(classifyCode, page);
+//    }
 }

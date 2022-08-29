@@ -2,6 +2,8 @@ package com.eShop.shiratama.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.ArrayList;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommodityBean {
     private Integer id;
@@ -43,8 +45,13 @@ public class CommodityBean {
         this.title = title;
     }
 
-    public String[] getCarousel() {
-        return carousel.split(",");
+    public ArrayList<String> getCarousel() {
+        String[] carouselData = carousel.split(",");
+        ArrayList<String> carouselDataUrl = new ArrayList<>();
+        for(var item: carouselData){
+            carouselDataUrl.add("/shopResources/commodity/03c7bcc1f1e87699.jpg!q70.dpg.webp"+item);
+        }
+        return carouselDataUrl;
     }
 
     public void setCarousel(String carousel) {
