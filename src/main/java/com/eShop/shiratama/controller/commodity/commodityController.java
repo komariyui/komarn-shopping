@@ -32,9 +32,9 @@ public class commodityController {
         return commodityService.getAllCommodityListForClassifyService(classifyCode, page);
     }
 
-    //get commodity information(use commodity code)
-    @GetMapping("/c/{commodityCode}/{token}")
-    public Boolean getCommodityInformation(@PathVariable("commodityCode") String commodityCode,@PathVariable("token") String token){
-        return tokenCheck.checkToken(token);
-    }
+//    //get commodity information(use commodity code)
+//    @GetMapping("/c/{commodityCode}/{token}")
+//    public Boolean getCommodityInformation(@PathVariable("commodityCode") String commodityCode,@PathVariable("token") String token){
+//        return tokenCheck.checkToken(token);
+//    }
 }
