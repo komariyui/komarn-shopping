@@ -8,4 +8,6 @@ public interface TokenCheckDao {
 
     public Integer checkToken(@Param("token") String token);
 
+    public Integer upTokenStatus(@Param("token") String token);
+
 }

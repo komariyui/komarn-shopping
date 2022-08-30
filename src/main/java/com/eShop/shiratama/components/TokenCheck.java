@@ -14,12 +14,16 @@ public class TokenCheck {
     public templateReturn checkTokenTemplateReturn(String token){
         if(checkToken(token))
             return templateReturn.success("",200,"当前token在有效期内");
-        else
+        else{
+            tokenCheckDao.upTokenStatus(token);
             return templateReturn.error(401,"登录已经失效，请重新登录");
+        }
     }
 
     public Boolean checkTokenComponent(String token){
-        return checkToken(token);
+        Boolean checkTokenStatus = checkToken(token);
+        if(checkTokenStatus==false) tokenCheckDao.upTokenStatus(token);
+        return checkTokenStatus;
     }
 
     private Boolean checkToken(String token){

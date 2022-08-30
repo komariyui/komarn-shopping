@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.eShop.shiratama.Dao.tokens.TokenCheckDao">
     <select id="checkToken" resultType="java.lang.Integer">
-        select if(NOW()>validity_period,0,1) from tokens WHERE token_code = #{token};
+        select if(NOW()>validity_period,0,1) from tokens WHERE token_code = #{token} and status=1;
     </select>
+    <update id="upTokenStatus">
+        update tokens set status = 0 where token_code = #{token}
+    </update>
 </mapper>
