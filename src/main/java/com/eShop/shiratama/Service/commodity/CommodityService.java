@@ -16,22 +16,36 @@ public class CommodityService {
     private CommodityDao commodityDao;
 
     public templateReturn getAllCommodityListService(String page){
-        HashMap<String,Object> objectData = new HashMap<>();
+
 
         Integer totalNumberOfPages = getNumberOfPages(commodityDao.getCommodityAllNumberOfPages());
         Integer[] pointer = getPointer(page);
 
         List<CommodityBean> commodityData =  commodityDao.getCommodityInformation(pointer[0],pointer[1]);
+
+
+        return templateReturn.success(returnHashMap(commodityData,page,totalNumberOfPages),200,null);
+    }
+
+    public templateReturn getAllCommodityListForClassifyService(String classifyCode,String page){
+
+        Integer[] pointer= getPointer(page);
+        HashMap commodityData = returnHashMap(
+                commodityDao.getCommodityInformationForClassify(pointer[0],pointer[1],Integer.parseInt(classifyCode)),
+                page,
+                getNumberOfPages(commodityDao.getCommodityAllNumberOfPagesForClassify(classifyCode))
+                );
+
+        return templateReturn.success(commodityData,200,null);
+    }
+
+    private HashMap returnHashMap(List<CommodityBean> commodityData,String page,Integer totalNumberOfPages){
+        HashMap<String,Object> objectData = new HashMap<>();
         objectData.put("data",commodityData);
         objectData.put("nowPage",page);
         objectData.put("totalPage",totalNumberOfPages);
-
-        return templateReturn.success(objectData,200,null);
+        return objectData;
     }
-
-//    public templateReturn getAllCommodityListForClassifyService(String classifyCode,String page){
-//
-//    }
 
     private Integer[] getPointer(String nowPage){
         Integer[] parseInt = new Integer[2];

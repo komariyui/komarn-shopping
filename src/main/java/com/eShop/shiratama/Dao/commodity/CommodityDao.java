@@ -11,4 +11,11 @@ public interface CommodityDao {
     public int getCommodityAllNumberOfPages();
 
     public List<CommodityBean> getCommodityInformation(@Param("start") Integer start, @Param("end") Integer end);
+
+    public int getCommodityAllNumberOfPagesForClassify(@Param("classify") String classify);
+
+    public List<CommodityBean> getCommodityInformationForClassify(
+            @Param("start") Integer start,
+            @Param("end") Integer end,
+            @Param("classify") Integer classify);
 }

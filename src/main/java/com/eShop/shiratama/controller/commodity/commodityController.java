@@ -22,9 +22,9 @@ public class commodityController {
         return commodityService.getAllCommodityListService(page);
     }
 
-//    //get commodity for classify(have paging)
-//    @GetMapping("/{classifyCode}/{page}")
-//    public templateReturn getAllCommodityForClassify(@PathVariable("classifyCode") String classifyCode,@PathVariable("page") String page){
-//        return commodityService.getAllCommodityListForClassifyService(classifyCode, page);
-//    }
+    //get commodity for classify(have paging)
+    @GetMapping("/{classifyCode}/{page}")
+    public templateReturn getAllCommodityForClassify(@PathVariable("classifyCode") String classifyCode,@PathVariable("page") String page){
+        return commodityService.getAllCommodityListForClassifyService(classifyCode, page);
+    }
 }

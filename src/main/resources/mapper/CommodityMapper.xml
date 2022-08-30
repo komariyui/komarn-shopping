@@ -7,4 +7,12 @@
     <select id="getCommodityInformation" resultType="com.eShop.shiratama.entity.CommodityBean">
         select id,title,carousel,level_two_classify,information,shop_id,status from commodity limit #{start},#{end};
     </select>
+
+    <select id="getCommodityAllNumberOfPagesForClassify" resultType="java.lang.Integer">
+        select count(*) from commodity where level_two_classify=#{classify};
+    </select>
+
+    <select id="getCommodityInformationForClassify" resultType="com.eShop.shiratama.entity.CommodityBean">
+        select id,title,carousel,level_two_classify,information,shop_id,status from commodity where level_two_classify=#{classify}  limit #{start},#{end};
+    </select>
 </mapper>
