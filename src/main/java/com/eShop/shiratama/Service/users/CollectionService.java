@@ -24,6 +24,20 @@ public class CollectionService {
         return templateReturn.success("添加成功",200,null);
     }
 
+    public templateReturn deleteCollectionService(String token,String commodityIdArray){
+        String username = tokenCheck.getUsername(token);
+
+        String fpl = commodityIdArray.replaceAll("\\\"","");
+        fpl = fpl.replace("[", "").replace("]","");
+        String[] footPrintListArray = fpl.split(",");
+
+        for(var item:footPrintListArray){
+            collectionDao.deleteCollection(username,item);
+        }
+        return templateReturn.success("删除成功",200,null);
+
+    }
+
     private Boolean isCollection(String username,String commodityId){
         return collectionDao.searchCollection(username,commodityId) == 1 ? true:false;
     }

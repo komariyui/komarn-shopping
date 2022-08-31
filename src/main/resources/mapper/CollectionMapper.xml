@@ -7,4 +7,7 @@
     <insert id="addCollection">
         insert into collection values(null,#{username},#{commodityId},NOW());
     </insert>
+    <delete id="deleteCollection">
+        delete from collection where username=#{username} and commodity_id=#{commodityId};
+    </delete>
 </mapper>
