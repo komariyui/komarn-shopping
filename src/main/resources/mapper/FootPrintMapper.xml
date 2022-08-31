@@ -21,6 +21,10 @@
       select * from footprint where username = #{username} limit #{start},#{end};
    </select>
 
+   <delete id="deleteFootPrint">
+      delete from footprint where username= #{username} and commodity_id =#{commodityId}
+   </delete>
+
 <!--   <select id="addFootPrint">-->
 <!--      if((select count(*) from footprint-->
 <!--      where username=#{username} and commodity_id=#{commodityId}) >= 1-->

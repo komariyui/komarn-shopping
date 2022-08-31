@@ -17,4 +17,6 @@ public interface FootPrintDao {
             @Param("username") String username,
             @Param("start") Integer start,
             @Param("end") Integer end);
+
+    public Integer deleteFootPrint(@Param("username") String username,@Param("commodityId") String commodityId);
 }

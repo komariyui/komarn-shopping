@@ -63,6 +63,19 @@ public class FootPrintService {
         return templateReturn.success(footPrintData,200,"获取足迹成功");
     }
 
+    public templateReturn deleteFootPrint(String token,String footPrintList){
+        String username = tokenCheck.getUsername(token);
+        String fpl = footPrintList.replaceAll("\\\"","");
+        fpl = fpl.replace("[", "").replace("]","");
+
+        String[] footPrintListArray = fpl.split(",");
+        for(var item:footPrintListArray){
+            footPrintDao.deleteFootPrint(username,item);
+        }
+
+        return templateReturn.success("成功删除",200,null);
+    }
+
     private Integer[] getPointer(String nowPage){
         Integer[] parseInt = new Integer[2];
 

@@ -43,6 +43,15 @@ public class FootprintController {
         return footPrintService.getFootPrintService(token,page);
     }
 
+    @PostMapping("/delete")
+    public templateReturn deleteFootPrint(@RequestBody HashMap<String,Object> data){
+//        @PathVariable("token") String token,@PathVariable("footPrintList") String footPrintList
+        if(isLogin(data.get("token").toString())) {
+            return templateReturn.error(401, "请重新登录");
+        }
+        return footPrintService.deleteFootPrint(data.get("token").toString(),data.get("footPrintList").toString());
+    }
+
     private Boolean isLogin(String tokenString){
         return !tokenCheck.getTokens(tokenString);
     }
