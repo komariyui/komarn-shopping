@@ -43,7 +43,7 @@ public class TokenCheck {
 
     private Boolean checkToken(String token){
         Integer answer = tokenCheckDao.checkToken(token);
-        if(answer != 1 || answer == null)
+        if( answer == null || answer != 1 )
             return false;
         else
             return true;
