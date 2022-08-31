@@ -16,7 +16,9 @@ public interface FootPrintDao {
     public List<FootprintBean> getFootPrintList(
             @Param("username") String username,
             @Param("start") Integer start,
-            @Param("end") Integer end);
+            @Param("end") Integer end,
+            @Param("sql") String sql
+            );
 
     public Integer deleteFootPrint(@Param("username") String username,@Param("commodityId") String commodityId);
 }

@@ -18,7 +18,7 @@
    </select>
 
    <select id="getFootPrintList" resultType="com.eShop.shiratama.entity.FootprintBean">
-      select * from footprint where username = #{username} limit #{start},#{end};
+      select * from footprint where username = #{username} order by interview_time ${sql} limit #{start},#{end};
    </select>
 
    <delete id="deleteFootPrint">

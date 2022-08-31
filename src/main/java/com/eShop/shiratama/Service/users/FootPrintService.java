@@ -41,12 +41,17 @@ public class FootPrintService {
 
     }
 
-    public templateReturn getFootPrintService(String token,String page){
+    public templateReturn getFootPrintService(String token,String page,String type){
+        String sql;
+        if(type == null) sql = "desc";
+        else if(type == "desc") sql = "desc";
+        else sql = "asc";
+
         String username = tokenCheck.getUsername(token);
         Integer[] pointer = getPointer(page);
         Integer total = getNumberOfPages(footPrintDao.countFootPrint(username));
 
-        List<FootprintBean>  footList = footPrintDao.getFootPrintList(username,pointer[0],pointer[1]);
+        List<FootprintBean>  footList = footPrintDao.getFootPrintList(username,pointer[0],pointer[1],sql);
 
         HashMap<String,Object> footPrintData = new HashMap<>();
         ArrayList<Object> arrays = new ArrayList<>();

@@ -34,13 +34,16 @@ public class FootprintController {
     }
 
     @GetMapping("/{token}/{page}")
-    public templateReturn getFootPrint(@PathVariable("token") String token,@PathVariable("page") String page){
+    public templateReturn getFootPrint(@PathVariable("token") String token,
+                                       @PathVariable("page") String page,
+                                      @RequestParam(value = "type",required = false) String type)
+    {
 
         if(isLogin(token)) {
             return templateReturn.error(401, "请重新登录");
         }
 
-        return footPrintService.getFootPrintService(token,page);
+        return footPrintService.getFootPrintService(token,page,type);
     }
 
     @PostMapping("/delete")
