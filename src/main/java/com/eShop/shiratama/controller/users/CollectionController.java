@@ -5,10 +5,7 @@ import com.eShop.shiratama.Service.users.CollectionService;
 import com.eShop.shiratama.components.TokenCheck;
 import com.eShop.shiratama.error.templateReturn;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -36,6 +33,14 @@ public class CollectionController {
             return templateReturn.error(401, "请重新登录");
         }
         return collectionService.deleteCollectionService(data.get("token").toString(),data.get("deleteCollectionList").toString());
+    }
+
+    @GetMapping("/{token}/{page}")
+    public templateReturn getCollection(@PathVariable("token") String token,@PathVariable("page") String page){
+        if(isLogin(token)) {
+            return templateReturn.error(401, "请重新登录");
+        }
+        return collectionService.getCollectionService(token,page);
     }
 
     private Boolean isLogin(String tokenString){

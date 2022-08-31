@@ -10,4 +10,10 @@
     <delete id="deleteCollection">
         delete from collection where username=#{username} and commodity_id=#{commodityId};
     </delete>
+    <select id="countCollection" resultType="java.lang.Integer">
+        select count(*) from collection where username=#{username};
+    </select>
+    <select id="getCollectionList" resultType="com.eShop.shiratama.entity.CollectionBean">
+        select * from Collection where username=#{username} order by collection_time desc limit #{start},#{end};
+    </select>
 </mapper>
