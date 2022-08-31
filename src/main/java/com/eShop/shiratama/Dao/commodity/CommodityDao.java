@@ -14,6 +14,8 @@ public interface CommodityDao {
 
     public int getCommodityAllNumberOfPagesForClassify(@Param("classify") String classify);
 
+    public CommodityBean getCommodityOne(@Param("commodityId") String commodityId);
+
     public List<CommodityBean> getCommodityInformationForClassify(
             @Param("start") Integer start,
             @Param("end") Integer end,

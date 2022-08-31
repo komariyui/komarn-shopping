@@ -13,6 +13,14 @@
       update footprint set interview_time = NOW() where username= #{username} and commodity_id =#{commodityId};
    </update>
 
+   <select id="countFootPrint" resultType="java.lang.Integer">
+      select count(*) from footprint where username = #{username};
+   </select>
+
+   <select id="getFootPrintList" resultType="com.eShop.shiratama.entity.FootprintBean">
+      select * from footprint where username = #{username} limit #{start},#{end};
+   </select>
+
 <!--   <select id="addFootPrint">-->
 <!--      if((select count(*) from footprint-->
 <!--      where username=#{username} and commodity_id=#{commodityId}) >= 1-->

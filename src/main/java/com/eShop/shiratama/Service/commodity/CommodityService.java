@@ -39,6 +39,10 @@ public class CommodityService {
         return templateReturn.success(commodityData,200,null);
     }
 
+    public CommodityBean useCommodityIdGetCommodity(String commodityId){
+            return commodityDao.getCommodityOne(commodityId);
+    }
+
     private HashMap returnHashMap(List<CommodityBean> commodityData,String page,Integer totalNumberOfPages){
         HashMap<String,Object> objectData = new HashMap<>();
         objectData.put("data",commodityData);
