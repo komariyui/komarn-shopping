@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eShop.shiratama.Dao.users.CollectionDao">
+    <select id="searchCollection" resultType="java.lang.Integer">
+        select if(count(*)>=1,1,2) from collection where username=#{username} and commodity_id=#{commodityId};
+    </select>
+    <insert id="addCollection">
+        insert into collection values(null,#{username},#{commodityId},NOW());
+    </insert>
+</mapper>
