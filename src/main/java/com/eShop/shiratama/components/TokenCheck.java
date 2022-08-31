@@ -37,8 +37,16 @@ public class TokenCheck {
         return returnData.getUsername();
     }
 
+    public Boolean getTokens(String token){
+        return checkToken(token);
+    }
+
     private Boolean checkToken(String token){
-        return tokenCheckDao.checkToken(token) == 1 ? true:false;
+        Integer answer = tokenCheckDao.checkToken(token);
+        if(answer != 1 || answer == null)
+            return false;
+        else
+            return true;
     }
 
 

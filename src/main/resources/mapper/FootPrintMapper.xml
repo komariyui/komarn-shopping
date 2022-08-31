@@ -2,6 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.eShop.shiratama.Dao.users.FootPrintDao">
    <insert id="addFootPrint">
-      insert into footprint values(null,#{userId},#{commodityId},NOW());
+      insert into footprint values(null,#{username},#{commodityId},NOW());
    </insert>
+
+   <select id="existenceFootprint" resultType="java.lang.Integer">
+      select count(*) from footprint where username = #{username} and commodity_id =#{commodityId};
+   </select>
+
+   <update id="updateFootPrint">
+      update footprint set interview_time = NOW() where username= #{username} and commodity_id =#{commodityId};
+   </update>
+
+<!--   <select id="addFootPrint">-->
+<!--      if((select count(*) from footprint-->
+<!--      where username=#{username} and commodity_id=#{commodityId}) >= 1-->
+<!--      (update footprint set interview_time = NOW()),-->
+<!--      (insert into footprint values(null,#{username},#{commodityId},NOW()))))-->
+<!--   </select>-->
 </mapper>

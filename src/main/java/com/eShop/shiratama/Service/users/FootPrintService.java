@@ -13,9 +13,18 @@ public class FootPrintService {
 
 
     public templateReturn addFootPrintService(String userId,String commodityId){
-        if(footPrintDao.addFootPrint(userId,commodityId) >= 1)
-            return templateReturn.success("添加足迹成功",200,null);
-        else
-            return templateReturn.error(401,"添加足迹失败");
+        if (footPrintDao.existenceFootprint(userId,commodityId) >= 1){
+            if (footPrintDao.updateFootPrint(userId,commodityId) >= 1)
+                return templateReturn.success("添加足迹成功", 200, null);
+            else
+                return templateReturn.error(401, "添加足迹失败");
+        }
+        else{
+            if (footPrintDao.addFootPrint(userId, commodityId) >= 1)
+                return templateReturn.success("添加足迹成功", 200, null);
+            else
+                return templateReturn.error(401, "添加足迹失败");
+        }
+
     }
 }
