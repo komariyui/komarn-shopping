@@ -1,6 +1,7 @@
 package com.eShop.shiratama.components;
 
 import com.eShop.shiratama.Dao.tokens.TokenIssueDao;
+import com.eShop.shiratama.entity.UsersBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,5 +58,6 @@ public class TokenIssue {
 
         return token;
     }
+
 
 }

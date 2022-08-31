@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface FootPrintDao {
-    public Integer addFootPrint(@Param("userId") String userId);
+    public Integer addFootPrint(@Param("userId") String userId,@Param("commodityId") String commodityId);
 }

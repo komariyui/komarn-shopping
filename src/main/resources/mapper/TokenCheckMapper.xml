@@ -7,4 +7,7 @@
     <update id="upTokenStatus">
         update tokens set status = 0 where token_code = #{token}
     </update>
+    <select id="getUsername" resultType="com.eShop.shiratama.entity.components.tokens">
+        select username from tokens where token_code = #{token}
+    </select>
 </mapper>

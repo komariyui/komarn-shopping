@@ -1,6 +1,7 @@
 package com.eShop.shiratama.components;
 
 import com.eShop.shiratama.Dao.tokens.TokenCheckDao;
+import com.eShop.shiratama.entity.components.tokens;
 import com.eShop.shiratama.error.templateReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,16 @@ public class TokenCheck {
         Boolean checkTokenStatus = checkToken(token);
         if(checkTokenStatus==false) tokenCheckDao.upTokenStatus(token);
         return checkTokenStatus;
+    }
+
+    public String getUsername(String token){
+        tokens returnData;
+        if(checkToken(token))
+             returnData = tokenCheckDao.getUsername(token);
+        else
+            return "token已经失效了，无法插入token";
+
+        return returnData.getUsername();
     }
 
     private Boolean checkToken(String token){

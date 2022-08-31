@@ -1,5 +1,6 @@
 package com.eShop.shiratama.Dao.tokens;
 
+import com.eShop.shiratama.entity.components.tokens;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,4 +11,5 @@ public interface TokenCheckDao {
 
     public Integer upTokenStatus(@Param("token") String token);
 
+    public tokens getUsername(@Param("token") String token);
 }
